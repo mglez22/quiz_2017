@@ -238,12 +238,12 @@ exports.randomcheck = function (req, res, next) {
 
     var answer = req.query.answer || "";
 
-    var result = answer.trim() === req.quiz.answer.trim();
+    var result = (answer.trim() === req.quiz.answer.trim());
 
     if (result) {
         req.session.score++;
     }
-    else req.session.score=0;
+    
 
     res.render('quizzes/random_result', {
         score: req.session.score,
