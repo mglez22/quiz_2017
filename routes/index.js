@@ -37,14 +37,23 @@ router.get(/(?!\/new$|\/edit$|\/play$|\/check$|\/session$|\/(\d+)$)\/[^\/]*$/, f
 //-----------------------------------------------------------
 
 /* GET home page. */
-router.get('/', function (req, res, next) {
-    res.render('index');
+
+router.get('/', function(req, res, next) {
+  res.render('index', { title: 'Quiz' });
 });
 
 // Pagina de creditos
 router.get('/author', function (req, res, next) {
     res.render('author');
 });
+
+
+//Pagina de ayuda
+router.get('/help', function(req, res, next){
+	res.render('help');
+
+});
+
 
 
 // Autoload de rutas que usen :quizId
@@ -130,6 +139,9 @@ router.put('/quizzes/:quizId(\\d+)/tips/:tipId(\\d+)/accept',
 router.delete('/quizzes/:quizId(\\d+)/tips/:tipId(\\d+)',
     sessionController.loginRequired,
     tipController.destroy);
+
+router.get('/quizzes/randomplay', quizController.randomplay);
+router.get('/quizzes/randomcheck/:quizId(\\d+)', quizController.randomcheck);
 
 
 module.exports = router;
