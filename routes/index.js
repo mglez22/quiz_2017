@@ -47,6 +47,11 @@ router.get('/author', function (req, res, next) {
     res.render('author');
 });
 
+// Pagina de ayuda
+router.get('/help', function(req, res, next) {
+    res.render('help');
+});
+
 
 //Pagina de ayuda
 router.get('/help', function(req, res, next){
@@ -142,6 +147,11 @@ router.delete('/quizzes/:quizId(\\d+)/tips/:tipId(\\d+)',
 
 router.get('/quizzes/randomplay', quizController.randomplay);
 router.get('/quizzes/randomcheck/:quizId(\\d+)', quizController.randomcheck);
+
+router.get('/quizzes/randomplay',  quizController.randomplay);
+router.get('/quizzes/randomcheck/:quizId(\\d+)', quizController.randomcheck);
+
+
 
 
 module.exports = router;
